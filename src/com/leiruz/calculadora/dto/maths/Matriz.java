@@ -13,9 +13,9 @@ public class Matriz {
     private List<BigDecimal> matriz;
 
     public Matriz(int rows, int columns, List<BigDecimal> matriz) {
-        this.rows = rows;
-        this.columns = columns;
-        this.matriz = matriz;
+        setRows(rows);
+        setColumns(columns);
+        setMatriz(matriz);
     }
 
     public int getRows() {
