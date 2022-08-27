@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="950.0"
-           prefWidth="1050.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
+           prefWidth="1250.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
            fx:controller="com.leiruz.calculadora.controller.CalculadoraOverview">
     <VBox alignment="TOP_CENTER">
         <StackPane.margin>
@@ -175,11 +175,38 @@
                     </StackPane>
                 </VBox>
             </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                <VBox alignment="BOTTOM_CENTER" prefHeight="550.0" prefWidth="200.0" spacing="20.0"
+                      AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                      AnchorPane.topAnchor="0.0">
+                    <padding>
+                        <Insets bottom="50.0"/>
+                    </padding>
+                    <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0"
+                            prefWidth="135.0" text="A + B">
+                        <font>
+                            <Font name="Droid Sans Mono" size="13.0"/>
+                        </font>
+                    </Button>
+                    <Button layoutX="80.0" layoutY="534.0" maxHeight="-Infinity" maxWidth="-Infinity"
+                            mnemonicParsing="false" prefHeight="30.0" prefWidth="135.0" text="A - B">
+                        <font>
+                            <Font name="Droid Sans Mono" size="13.0"/>
+                        </font>
+                    </Button>
+                    <Button layoutX="80.0" layoutY="508.0" maxHeight="-Infinity" maxWidth="-Infinity"
+                            mnemonicParsing="false" prefHeight="30.0" prefWidth="135.0" text="A * B">
+                        <font>
+                            <Font name="Droid Sans Mono" size="13.0"/>
+                        </font>
+                    </Button>
+                </VBox>
+            </AnchorPane>
             <AnchorPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308"
                         prefHeight="550.0" prefWidth="525.0">
                 <VBox maxHeight="1.7976931348623157E308" prefHeight="550.0" prefWidth="525.0">
-                    <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308"
-                           text="Matriz B" textAlignment="CENTER">
+                    <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="Matriz B"
+                           textAlignment="CENTER">
                         <padding>
                             <Insets bottom="10.0" left="5.0" right="5.0" top="10.0"/>
                         </padding>
@@ -187,8 +214,7 @@
                             <Font name="Droid Sans Mono" size="13.0"/>
                         </font>
                     </Label>
-                    <StackPane fx:id="SP_mB" maxWidth="1.7976931348623157E308" prefHeight="310.0"
-                               prefWidth="200.0">
+                    <StackPane fx:id="SP_mB" maxWidth="1.7976931348623157E308" prefHeight="310.0" prefWidth="200.0">
                         <GridPane hgap="5.0" maxHeight="-Infinity" maxWidth="-Infinity" vgap="5.0">
                             <columnConstraints>
                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
@@ -204,28 +230,24 @@
                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                             </padding>
                             <TextField alignment="CENTER"/>
-                            <TextField alignment="CENTER" layoutX="145.0" layoutY="25.0"
-                                       GridPane.columnIndex="1"/>
-                            <TextField alignment="CENTER" layoutX="145.0" layoutY="25.0"
-                                       GridPane.columnIndex="2"/>
-                            <TextField alignment="CENTER" layoutX="145.0" layoutY="25.0"
+                            <TextField alignment="CENTER" layoutX="145.0" layoutY="25.0" GridPane.columnIndex="1"/>
+                            <TextField alignment="CENTER" layoutX="145.0" layoutY="25.0" GridPane.columnIndex="2"/>
+                            <TextField alignment="CENTER" layoutX="145.0" layoutY="25.0" GridPane.rowIndex="1"/>
+                            <TextField alignment="CENTER" layoutX="145.0" layoutY="25.0" GridPane.columnIndex="1"
                                        GridPane.rowIndex="1"/>
-                            <TextField alignment="CENTER" layoutX="145.0" layoutY="25.0"
-                                       GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                            <TextField alignment="CENTER" layoutX="145.0" layoutY="25.0"
-                                       GridPane.columnIndex="2" GridPane.rowIndex="1"/>
-                            <TextField alignment="CENTER" layoutX="145.0" layoutY="25.0"
+                            <TextField alignment="CENTER" layoutX="145.0" layoutY="25.0" GridPane.columnIndex="2"
+                                       GridPane.rowIndex="1"/>
+                            <TextField alignment="CENTER" layoutX="145.0" layoutY="25.0" GridPane.rowIndex="2"/>
+                            <TextField alignment="CENTER" layoutX="145.0" layoutY="25.0" GridPane.columnIndex="1"
                                        GridPane.rowIndex="2"/>
-                            <TextField alignment="CENTER" layoutX="145.0" layoutY="25.0"
-                                       GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-                            <TextField alignment="CENTER" layoutX="145.0" layoutY="25.0"
-                                       GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                            <TextField alignment="CENTER" layoutX="145.0" layoutY="25.0" GridPane.columnIndex="2"
+                                       GridPane.rowIndex="2"/>
                         </GridPane>
                     </StackPane>
-                    <StackPane layoutX="10.0" layoutY="46.0" maxWidth="1.7976931348623157E308"
-                               prefHeight="207.0" prefWidth="200.0">
-                        <GridPane hgap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="350.0"
-                                  vgap="10.0" StackPane.alignment="CENTER">
+                    <StackPane layoutX="10.0" layoutY="46.0" maxWidth="1.7976931348623157E308" prefHeight="207.0"
+                               prefWidth="200.0">
+                        <GridPane hgap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="350.0" vgap="10.0"
+                                  StackPane.alignment="CENTER">
                             <columnConstraints>
                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
@@ -239,9 +261,8 @@
                             <padding>
                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
                             </padding>
-                            <Button alignment="CENTER" contentDisplay="CENTER"
-                                    maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                                    mnemonicParsing="false" text="Determinante"
+                            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308"
+                                    maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Determinante"
                                     GridPane.halignment="CENTER" GridPane.rowIndex="1">
                                 <padding>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
@@ -250,10 +271,9 @@
                                     <Font name="Droid Sans Mono" size="13.0"/>
                                 </font>
                             </Button>
-                            <Button alignment="CENTER" contentDisplay="CENTER"
-                                    maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                                    mnemonicParsing="false" text="Matriz inversa" textAlignment="CENTER"
-                                    GridPane.columnIndex="1" GridPane.halignment="CENTER"
+                            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308"
+                                    maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Matriz inversa"
+                                    textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER"
                                     GridPane.rowIndex="1">
                                 <padding>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
@@ -262,9 +282,8 @@
                                     <Font name="Droid Sans Mono" size="13.0"/>
                                 </font>
                             </Button>
-                            <Button alignment="CENTER" contentDisplay="CENTER"
-                                    maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                                    mnemonicParsing="false" text="Matriz transpuesta"
+                            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308"
+                                    maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Matriz transpuesta"
                                     GridPane.halignment="CENTER" GridPane.rowIndex="2">
                                 <padding>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
@@ -273,10 +292,9 @@
                                     <Font name="Droid Sans Mono" size="13.0"/>
                                 </font>
                             </Button>
-                            <Button alignment="CENTER" contentDisplay="CENTER"
-                                    maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                                    mnemonicParsing="false" text="Rango" GridPane.columnIndex="1"
-                                    GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308"
+                                    maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Rango"
+                                    GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                                 <padding>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                                 </padding>
@@ -284,11 +302,10 @@
                                     <Font name="Droid Sans Mono" size="13.0"/>
                                 </font>
                             </Button>
-                            <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0"
-                                  GridPane.columnSpan="2" GridPane.rowIndex="3">
-                                <Button alignment="CENTER" contentDisplay="CENTER"
-                                        maxHeight="1.7976931348623157E308" maxWidth="-Infinity"
-                                        mnemonicParsing="false" prefWidth="135.0"
+                            <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnSpan="2"
+                                  GridPane.rowIndex="3">
+                                <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308"
+                                        maxWidth="-Infinity" mnemonicParsing="false" prefWidth="135.0"
                                         text="Multiplicar por">
                                     <padding>
                                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
@@ -300,32 +317,28 @@
                                         <Font name="Droid Sans Mono" size="13.0"/>
                                     </font>
                                 </Button>
-                                <TextField maxHeight="1.7976931348623157E308" maxWidth="-Infinity"
-                                           prefWidth="60.0"/>
+                                <TextField maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefWidth="60.0"/>
                             </HBox>
                             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0"
                                   GridPane.columnSpan="2">
-                                <ComboBox fx:id="cb_MB" maxHeight="1.7976931348623157E308"
-                                          maxWidth="-Infinity" prefWidth="110.0"/>
-                                <Button alignment="CENTER" contentDisplay="CENTER"
-                                        maxHeight="1.7976931348623157E308" maxWidth="-Infinity"
-                                        mnemonicParsing="false" onAction="#handleButtonAdd_mB"
+                                <ComboBox fx:id="cb_MB" maxHeight="1.7976931348623157E308" maxWidth="-Infinity"
+                                          prefWidth="110.0"/>
+                                <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308"
+                                        maxWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonAdd_mB"
                                         prefWidth="30.0" text="+" textAlignment="CENTER">
                                     <font>
                                         <Font name="Droid Sans Mono" size="13.0"/>
                                     </font>
                                 </Button>
-                                <Button alignment="CENTER" contentDisplay="CENTER"
-                                        maxHeight="1.7976931348623157E308" maxWidth="-Infinity"
-                                        mnemonicParsing="false" onAction="#handleButtonDel_mB"
+                                <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308"
+                                        maxWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonDel_mB"
                                         prefWidth="30.0" text="-" textAlignment="CENTER">
                                     <font>
                                         <Font name="Droid Sans Mono" size="13.0"/>
                                     </font>
                                 </Button>
-                                <Button alignment="CENTER" contentDisplay="CENTER"
-                                        maxHeight="1.7976931348623157E308" maxWidth="-Infinity"
-                                        mnemonicParsing="false" prefWidth="60.0" text="Button"
+                                <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308"
+                                        maxWidth="-Infinity" mnemonicParsing="false" prefWidth="60.0" text="Button"
                                         textAlignment="CENTER"/>
                             </HBox>
                         </GridPane>
