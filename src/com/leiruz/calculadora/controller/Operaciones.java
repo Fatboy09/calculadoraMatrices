@@ -11,11 +11,11 @@ import java.util.Objects;
 
 public class Operaciones {
 
-    public boolean is_Matrix_square(Matriz matriz) {
+    public static boolean is_Matrix_square(Matriz matriz) {
         return Objects.equals(matriz.getRows(), matriz.getColumns());
     }
 
-    private List<BigDecimal> getMatrizCofactores(List<BigDecimal> matriz, final int orden, final int row, final int column) {
+    private static List<BigDecimal> getMatrizCofactores(List<BigDecimal> matriz, final int orden, final int row, final int column) {
         List<BigDecimal> cofactores = new ArrayList<>();
 
         int i, j;
@@ -37,7 +37,7 @@ public class Operaciones {
         return cofactores;
     }
 
-    private int column_max_with_zeros(List<BigDecimal> matriz, int orden) {
+    private static int column_max_with_zeros(List<BigDecimal> matriz, int orden) {
         int contador_zeros = 0;
         int aux_contador_zeros = 0;
         int column_zeros = 0;
@@ -57,7 +57,7 @@ public class Operaciones {
         return column_zeros;
     }
 
-    private BigDecimal calculateDeterminante(List<BigDecimal> matriz, int orden) {
+    public static BigDecimal calculateDeterminante(List<BigDecimal> matriz, int orden) {
         if (orden == 1)
             return matriz.get(0);
         else if (orden == 2)

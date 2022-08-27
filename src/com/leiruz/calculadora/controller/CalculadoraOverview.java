@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 
+import java.math.BigDecimal;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +30,7 @@ public class CalculadoraOverview implements Initializable {
     private int rowsMatrizB;
     private Matriz matrizA;
     private Matriz matrizB;
+    private Matriz matrizC;
     @FXML
     private StackPane SP_mA;
     @FXML
@@ -47,6 +49,7 @@ public class CalculadoraOverview implements Initializable {
         columnsMatrizA = columnsMatrizB = rowsMatrizA = rowsMatrizB = 3;
         matrizA = new Matriz(rowsMatrizA, columnsMatrizA, new ArrayList<>());
         matrizB = new Matriz(rowsMatrizB, columnsMatrizB, new ArrayList<>());
+        matrizC = new Matriz();
     }
 
     @FXML
@@ -133,5 +136,47 @@ public class CalculadoraOverview implements Initializable {
         listTextFields.forEach(textField -> auxGp.getChildren().addAll(textField));
         StackPane.setMargin(auxGp, new Insets(5D));
         return auxGp;
+    }
+
+    @FXML
+    public void handleButtonDet_mA() {
+        if (!matrizA.getMatriz().isEmpty()) {
+            matrizA.getMatriz().clear();
+        }
+        if (Operaciones.is_Matrix_square(matrizA)) {
+            inicializarMatriz(SP_mA, matrizA);
+            matrizC.setRows(matrizA.getRows());
+            matrizC.setColumns(matrizA.getColumns());
+            matrizC.setMatriz(matrizA.getMatriz());
+            BigDecimal determinante = Operaciones.calculateDeterminante(matrizA.getMatriz(), matrizA.getColumns());
+            System.out.println(determinante);
+        }
+    }
+
+    @FXML
+    public void handleButtonDet_mB() {
+        if (!matrizB.getMatriz().isEmpty()) {
+            matrizB.getMatriz().clear();
+        }
+        if (Operaciones.is_Matrix_square(matrizB)) {
+            inicializarMatriz(SP_mB, matrizB);
+            matrizC.setRows(matrizB.getRows());
+            matrizC.setColumns(matrizB.getColumns());
+            matrizC.setMatriz(matrizB.getMatriz());
+            BigDecimal determinante = Operaciones.calculateDeterminante(matrizB.getMatriz(), matrizB.getColumns());
+            System.out.println(determinante);
+        }
+    }
+
+    private void inicializarMatriz(StackPane root, Matriz matriz) {
+        GridPane gridPane = (GridPane) root.getChildren().get(0);
+        gridPane.getChildren().forEach(node -> {
+            TextField textField = (TextField) node;
+            try {
+                matriz.getMatriz().add(new BigDecimal(textField.getText()));
+            } catch (NumberFormatException nfe) {
+                System.out.println(nfe.getMessage());
+            }
+        });
     }
 }

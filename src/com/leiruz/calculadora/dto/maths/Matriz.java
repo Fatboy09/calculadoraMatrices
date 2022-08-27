@@ -18,6 +18,8 @@ public class Matriz {
         setMatriz(matriz);
     }
 
+    public Matriz() {}
+
     public int getRows() {
         return rows;
     }
