@@ -14,6 +14,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +36,8 @@ public class CalculadoraOverview implements Initializable {
     private StackPane SP_mA;
     @FXML
     private StackPane SP_mB;
+    @FXML
+    private StackPane SP_mC;
     @FXML
     private ComboBox<String> cb_MA;
     @FXML
@@ -65,7 +68,7 @@ public class CalculadoraOverview implements Initializable {
         if (!SP_mA.getChildren().isEmpty()) {
             SP_mA.getChildren().clear();
         }
-        SP_mA.getChildren().add(createMatrizGP(matrizA.getRows(), matrizA.getColumns()));
+        SP_mA.getChildren().add(createMatrizGP(matrizA.getRows(), matrizA.getColumns(), false));
     }
 
     @FXML
@@ -81,7 +84,7 @@ public class CalculadoraOverview implements Initializable {
         if (!SP_mB.getChildren().isEmpty()) {
             SP_mB.getChildren().clear();
         }
-        SP_mB.getChildren().add(createMatrizGP(matrizB.getRows(), matrizB.getColumns()));
+        SP_mB.getChildren().add(createMatrizGP(matrizB.getRows(), matrizB.getColumns(), false));
     }
 
     @FXML
@@ -97,7 +100,7 @@ public class CalculadoraOverview implements Initializable {
         if (!SP_mA.getChildren().isEmpty()) {
             SP_mA.getChildren().clear();
         }
-        SP_mA.getChildren().add(createMatrizGP(matrizA.getRows(), matrizA.getColumns()));
+        SP_mA.getChildren().add(createMatrizGP(matrizA.getRows(), matrizA.getColumns(), false));
     }
 
     @FXML
@@ -113,24 +116,36 @@ public class CalculadoraOverview implements Initializable {
         if (!SP_mB.getChildren().isEmpty()) {
             SP_mB.getChildren().clear();
         }
-        SP_mB.getChildren().add(createMatrizGP(matrizB.getRows(), matrizB.getColumns()));
+        SP_mB.getChildren().add(createMatrizGP(matrizB.getRows(), matrizB.getColumns(), false));
     }
 
-    private GridPane createMatrizGP(final int rows, final int columns) {
+    private GridPane createMatrizGP(final int rows, final int columns, final boolean isGPMc) {
         GridPane auxGp = new GridPane();
         List<TextField> listTextFields = new ArrayList<>();
-        for (int e = 0; e < columns * rows; ++e) {
-            TextField textField = textFieldSupplier.get();
-            textField.setMaxWidth(100);
-            textField.setMaxHeight(26);
-            listTextFields.add(textField);
+
+        if (isGPMc) {
+            matrizC.getMatriz().forEach(bigDecimal -> listTextFields.add(new TextField(
+                    bigDecimal.stripTrailingZeros().scale() <= 0 ? bigDecimal.toString() : bigDecimal.setScale(3, RoundingMode.HALF_UP).toString())));
+            listTextFields.forEach(textField -> {
+                textField.setMaxWidth(100);
+                textField.setMaxHeight(26);
+                textField.setEditable(false);
+            });
+            auxGp.setAlignment(Pos.TOP_CENTER);
+        } else {
+            for (int e = 0; e < columns * rows; ++e) {
+                TextField textField = textFieldSupplier.get();
+                textField.setMaxWidth(100);
+                textField.setMaxHeight(26);
+                listTextFields.add(textField);
+            }
+            auxGp.setAlignment(Pos.CENTER);
         }
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < columns; col++) {
                 GridPane.setConstraints(listTextFields.get(row * columns + col), col, row);
             }
         }
-        auxGp.setAlignment(Pos.CENTER);
         auxGp.setHgap(5D);
         auxGp.setVgap(5D);
         listTextFields.forEach(textField -> auxGp.getChildren().addAll(textField));
@@ -150,6 +165,7 @@ public class CalculadoraOverview implements Initializable {
             matrizC.setMatriz(matrizA.getMatriz());
             BigDecimal determinante = Operaciones.calculateDeterminante(matrizA.getMatriz(), matrizA.getColumns());
             System.out.println(determinante);
+            SP_mC.getChildren().add(createMatrizGP(matrizC.getRows(), matrizC.getColumns(), true));
         }
     }
 

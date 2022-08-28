@@ -350,5 +350,6 @@
                 </VBox>
             </AnchorPane>
         </HBox>
+        <StackPane fx:id="SP_mC" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="350.0" prefWidth="1250.0"/>
     </VBox>
 </StackPane>
