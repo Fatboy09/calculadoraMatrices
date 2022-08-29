@@ -9,9 +9,13 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -131,7 +135,7 @@ public class CalculadoraOverview implements Initializable {
                 textField.setMaxHeight(26);
                 textField.setEditable(false);
             });
-            auxGp.setAlignment(Pos.TOP_CENTER);
+            auxGp.setBorder(new Border(new BorderStroke(Color.GREEN,BorderStrokeStyle.SOLID,CornerRadii.EMPTY,null)));
         } else {
             for (int e = 0; e < columns * rows; ++e) {
                 TextField textField = textFieldSupplier.get();
@@ -139,13 +143,13 @@ public class CalculadoraOverview implements Initializable {
                 textField.setMaxHeight(26);
                 listTextFields.add(textField);
             }
-            auxGp.setAlignment(Pos.CENTER);
         }
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < columns; col++) {
                 GridPane.setConstraints(listTextFields.get(row * columns + col), col, row);
             }
         }
+        auxGp.setAlignment(Pos.CENTER);
         auxGp.setHgap(5D);
         auxGp.setVgap(5D);
         listTextFields.forEach(textField -> auxGp.getChildren().addAll(textField));
@@ -158,6 +162,9 @@ public class CalculadoraOverview implements Initializable {
         if (!matrizA.getMatriz().isEmpty()) {
             matrizA.getMatriz().clear();
         }
+        if (!SP_mC.getChildren().isEmpty()) {
+            SP_mC.getChildren().clear();
+        }
         if (Operaciones.is_Matrix_square(matrizA)) {
             inicializarMatriz(SP_mA, matrizA);
             matrizC.setRows(matrizA.getRows());
@@ -165,7 +172,16 @@ public class CalculadoraOverview implements Initializable {
             matrizC.setMatriz(matrizA.getMatriz());
             BigDecimal determinante = Operaciones.calculateDeterminante(matrizA.getMatriz(), matrizA.getColumns());
             System.out.println(determinante);
-            SP_mC.getChildren().add(createMatrizGP(matrizC.getRows(), matrizC.getColumns(), true));
+            Label resultado = new Label("= " + determinante.toString());
+            resultado.setFont(Font.font("Fira Code", FontWeight.BOLD, FontPosture.REGULAR,20D));
+            resultado.setBorder(new Border(new BorderStroke(Color.BLUE,BorderStrokeStyle.SOLID,CornerRadii.EMPTY,null)));
+            HBox hBox = new HBox();
+            hBox.setSpacing(10D);
+            hBox.setPadding(new Insets(10D));
+            hBox.setAlignment(Pos.CENTER);
+            hBox.setBorder(new Border(new BorderStroke(Color.RED,BorderStrokeStyle.SOLID,CornerRadii.EMPTY,null)));
+            hBox.getChildren().addAll(createMatrizGP(matrizC.getRows(), matrizC.getColumns(), true),resultado);
+            SP_mC.getChildren().addAll(hBox);
         }
     }
 
