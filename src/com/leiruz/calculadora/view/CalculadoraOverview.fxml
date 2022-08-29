@@ -125,8 +125,9 @@
                                 </font>
                             </Button>
                             <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308"
-                                    maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Rango"
-                                    GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                                    maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                                    onAction="#handleButtonRan_mA" text="Rango" GridPane.columnIndex="1"
+                                    GridPane.halignment="CENTER" GridPane.rowIndex="2">
                                 <padding>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                                 </padding>
@@ -299,8 +300,9 @@
                                 </font>
                             </Button>
                             <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308"
-                                    maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Rango"
-                                    GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                                    maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                                    onAction="#handleButtonRan_mB" text="Rango" GridPane.columnIndex="1"
+                                    GridPane.halignment="CENTER" GridPane.rowIndex="2">
                                 <padding>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                                 </padding>

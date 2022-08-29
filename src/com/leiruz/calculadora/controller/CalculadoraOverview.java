@@ -239,6 +239,36 @@ public class CalculadoraOverview implements Initializable {
         SP_mC.getChildren().add(createMatrizGP(matrizC.getRows(), matrizC.getColumns(), true));
     }
 
+    @FXML
+    public void handleButtonRan_mA() {
+        clearNodes(matrizA, SP_mC);
+        inicializarMatriz(SP_mA, matrizA);
+        int range = Operaciones.calculateRange(matrizA);
+        Label resultado = new Label("rango(A) = " + range);
+        resultado.setFont(Font.font("Fira Code", FontWeight.BOLD, FontPosture.REGULAR, 25D));
+        HBox hBox = new HBox();
+        hBox.setSpacing(10D);
+        hBox.setPadding(new Insets(10D));
+        hBox.setAlignment(Pos.CENTER);
+        hBox.getChildren().addAll(resultado);
+        SP_mC.getChildren().addAll(hBox);
+    }
+
+    @FXML
+    public void handleButtonRan_mB() {
+        clearNodes(matrizB, SP_mC);
+        inicializarMatriz(SP_mB, matrizB);
+        int range = Operaciones.calculateRange(matrizB);
+        Label resultado = new Label("rango(B) = " + range);
+        resultado.setFont(Font.font("Fira Code", FontWeight.BOLD, FontPosture.REGULAR, 25D));
+        HBox hBox = new HBox();
+        hBox.setSpacing(10D);
+        hBox.setPadding(new Insets(10D));
+        hBox.setAlignment(Pos.CENTER);
+        hBox.getChildren().addAll(resultado);
+        SP_mC.getChildren().addAll(hBox);
+    }
+
     private void inicializarMatriz(StackPane root, Matriz matriz) {
         GridPane gridPane = (GridPane) root.getChildren().get(0);
         gridPane.getChildren().forEach(node -> {

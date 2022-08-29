@@ -76,7 +76,7 @@ public class Operaciones {
         return resultado;
     }
 
-    private void addRows(List<BigDecimal> matriz, final int columns, final int row1, final int row2, final int column, BigDecimal lcm) {
+    private static void addRows(List<BigDecimal> matriz, final int columns, final int row1, final int row2, final int column, BigDecimal lcm) {
         BigDecimal factor1 = lcm.divide(matriz.get(row1 * columns + column), RoundingMode.DOWN);
         BigDecimal factor2 = lcm.divide(matriz.get(row2 * columns + column), RoundingMode.DOWN);
         if (((matriz.get(row1 * columns + column).compareTo(BigDecimal.ZERO) < 0) && (matriz.get(row2 * columns + column).compareTo(BigDecimal.ZERO) < 0))
@@ -93,7 +93,7 @@ public class Operaciones {
 
     }
 
-    private BigDecimal get_lcm(BigDecimal bg1, BigDecimal bg2) {
+    private static BigDecimal get_lcm(BigDecimal bg1, BigDecimal bg2) {
         BigDecimal big = bg1.max(bg2);
         BigDecimal small = bg1.min(bg2);
         for (int i = big.intValue(); ; i += big.intValue()) {
@@ -103,7 +103,7 @@ public class Operaciones {
         }
     }
 
-    private List<BigDecimal> calculateMatrizEscalonada(Matriz matriz) {
+    private static List<BigDecimal> calculateMatrizEscalonada(Matriz matriz) {
         List<BigDecimal> matriz_escalonada = new ArrayList<>(matriz.getMatriz());
         int row_pivot = 0;
         for (int y = 0; y < matriz.getColumns(); ++y) {
@@ -118,7 +118,7 @@ public class Operaciones {
         return matriz_escalonada;
     }
 
-    private int get_total_rows_nonZeros(List<BigDecimal> matriz, int rows, final int columns) {
+    private static int get_total_rows_nonZeros(List<BigDecimal> matriz, int rows, final int columns) {
         int contador = 0;
         int rows_zeros = 0;
 
@@ -235,7 +235,7 @@ public class Operaciones {
         return calculateProductoEscalar(BigDecimal.ONE.divide(determinante, 20, RoundingMode.DOWN), adjunta);
     }
 
-    private int calculateRange(Matriz matriz) {
+    public static int calculateRange(Matriz matriz) {
         List<BigDecimal> escalonada = calculateMatrizEscalonada(matriz);
         return get_total_rows_nonZeros(escalonada, matriz.getRows(), matriz.getColumns());
     }
