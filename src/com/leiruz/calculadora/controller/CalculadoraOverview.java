@@ -12,7 +12,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
@@ -133,14 +132,15 @@ public class CalculadoraOverview implements Initializable {
             listTextFields.forEach(textField -> {
                 textField.setMaxWidth(100);
                 textField.setMaxHeight(26);
+                textField.setAlignment(Pos.CENTER);
                 textField.setEditable(false);
             });
-            auxGp.setBorder(new Border(new BorderStroke(Color.GREEN,BorderStrokeStyle.SOLID,CornerRadii.EMPTY,null)));
         } else {
             for (int e = 0; e < columns * rows; ++e) {
                 TextField textField = textFieldSupplier.get();
                 textField.setMaxWidth(100);
                 textField.setMaxHeight(26);
+                textField.setAlignment(Pos.CENTER);
                 listTextFields.add(textField);
             }
         }
@@ -171,15 +171,12 @@ public class CalculadoraOverview implements Initializable {
             matrizC.setColumns(matrizA.getColumns());
             matrizC.setMatriz(matrizA.getMatriz());
             BigDecimal determinante = Operaciones.calculateDeterminante(matrizA.getMatriz(), matrizA.getColumns());
-            System.out.println(determinante);
-            Label resultado = new Label("= " + determinante.toString());
-            resultado.setFont(Font.font("Fira Code", FontWeight.BOLD, FontPosture.REGULAR,20D));
-            resultado.setBorder(new Border(new BorderStroke(Color.BLUE,BorderStrokeStyle.SOLID,CornerRadii.EMPTY,null)));
+            Label resultado = new Label(" = " + determinante.toString());
+            resultado.setFont(Font.font("Fira Code", FontWeight.BOLD, FontPosture.REGULAR,25D));
             HBox hBox = new HBox();
             hBox.setSpacing(10D);
             hBox.setPadding(new Insets(10D));
             hBox.setAlignment(Pos.CENTER);
-            hBox.setBorder(new Border(new BorderStroke(Color.RED,BorderStrokeStyle.SOLID,CornerRadii.EMPTY,null)));
             hBox.getChildren().addAll(createMatrizGP(matrizC.getRows(), matrizC.getColumns(), true),resultado);
             SP_mC.getChildren().addAll(hBox);
         }
@@ -190,13 +187,23 @@ public class CalculadoraOverview implements Initializable {
         if (!matrizB.getMatriz().isEmpty()) {
             matrizB.getMatriz().clear();
         }
+        if (!SP_mC.getChildren().isEmpty()) {
+            SP_mC.getChildren().clear();
+        }
         if (Operaciones.is_Matrix_square(matrizB)) {
             inicializarMatriz(SP_mB, matrizB);
             matrizC.setRows(matrizB.getRows());
             matrizC.setColumns(matrizB.getColumns());
             matrizC.setMatriz(matrizB.getMatriz());
             BigDecimal determinante = Operaciones.calculateDeterminante(matrizB.getMatriz(), matrizB.getColumns());
-            System.out.println(determinante);
+            Label resultado = new Label(" = " + determinante.toString());
+            resultado.setFont(Font.font("Fira Code", FontWeight.BOLD, FontPosture.REGULAR,25D));
+            HBox hBox = new HBox();
+            hBox.setSpacing(10D);
+            hBox.setPadding(new Insets(10D));
+            hBox.setAlignment(Pos.CENTER);
+            hBox.getChildren().addAll(createMatrizGP(matrizC.getRows(), matrizC.getColumns(), true),resultado);
+            SP_mC.getChildren().addAll(hBox);
         }
     }
 
