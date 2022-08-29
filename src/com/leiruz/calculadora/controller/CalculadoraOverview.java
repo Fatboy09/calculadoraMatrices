@@ -159,12 +159,7 @@ public class CalculadoraOverview implements Initializable {
 
     @FXML
     public void handleButtonDet_mA() {
-        if (!matrizA.getMatriz().isEmpty()) {
-            matrizA.getMatriz().clear();
-        }
-        if (!SP_mC.getChildren().isEmpty()) {
-            SP_mC.getChildren().clear();
-        }
+        clearNodes(matrizA, SP_mC);
         if (Operaciones.is_Matrix_square(matrizA)) {
             inicializarMatriz(SP_mA, matrizA);
             matrizC.setRows(matrizA.getRows());
@@ -172,24 +167,19 @@ public class CalculadoraOverview implements Initializable {
             matrizC.setMatriz(matrizA.getMatriz());
             BigDecimal determinante = Operaciones.calculateDeterminante(matrizA.getMatriz(), matrizA.getColumns());
             Label resultado = new Label(" = " + determinante.toString());
-            resultado.setFont(Font.font("Fira Code", FontWeight.BOLD, FontPosture.REGULAR,25D));
+            resultado.setFont(Font.font("Fira Code", FontWeight.BOLD, FontPosture.REGULAR, 25D));
             HBox hBox = new HBox();
             hBox.setSpacing(10D);
             hBox.setPadding(new Insets(10D));
             hBox.setAlignment(Pos.CENTER);
-            hBox.getChildren().addAll(createMatrizGP(matrizC.getRows(), matrizC.getColumns(), true),resultado);
+            hBox.getChildren().addAll(createMatrizGP(matrizC.getRows(), matrizC.getColumns(), true), resultado);
             SP_mC.getChildren().addAll(hBox);
         }
     }
 
     @FXML
     public void handleButtonDet_mB() {
-        if (!matrizB.getMatriz().isEmpty()) {
-            matrizB.getMatriz().clear();
-        }
-        if (!SP_mC.getChildren().isEmpty()) {
-            SP_mC.getChildren().clear();
-        }
+        clearNodes(matrizB, SP_mC);
         if (Operaciones.is_Matrix_square(matrizB)) {
             inicializarMatriz(SP_mB, matrizB);
             matrizC.setRows(matrizB.getRows());
@@ -197,13 +187,34 @@ public class CalculadoraOverview implements Initializable {
             matrizC.setMatriz(matrizB.getMatriz());
             BigDecimal determinante = Operaciones.calculateDeterminante(matrizB.getMatriz(), matrizB.getColumns());
             Label resultado = new Label(" = " + determinante.toString());
-            resultado.setFont(Font.font("Fira Code", FontWeight.BOLD, FontPosture.REGULAR,25D));
+            resultado.setFont(Font.font("Fira Code", FontWeight.BOLD, FontPosture.REGULAR, 25D));
             HBox hBox = new HBox();
             hBox.setSpacing(10D);
             hBox.setPadding(new Insets(10D));
             hBox.setAlignment(Pos.CENTER);
-            hBox.getChildren().addAll(createMatrizGP(matrizC.getRows(), matrizC.getColumns(), true),resultado);
+            hBox.getChildren().addAll(createMatrizGP(matrizC.getRows(), matrizC.getColumns(), true), resultado);
             SP_mC.getChildren().addAll(hBox);
+        }
+    }
+
+    @FXML
+    public void handleButtonInv_mA() {
+        if (Operaciones.is_Matrix_square(matrizA)) {
+            clearNodes(matrizA, SP_mC);
+            inicializarMatriz(SP_mA, matrizA);
+            initMatrizC(matrizC, matrizA);
+            matrizC.setMatriz(Operaciones.calculateInversa(matrizA));
+            SP_mC.getChildren().add(createMatrizGP(matrizC.getRows(), matrizC.getColumns(), true));
+        }
+    }
+
+    public void handleButtonInv_mB() {
+        if (Operaciones.is_Matrix_square(matrizB)) {
+            clearNodes(matrizB, SP_mC);
+            inicializarMatriz(SP_mB, matrizB);
+            initMatrizC(matrizC, matrizB);
+            matrizC.setMatriz(Operaciones.calculateInversa(matrizB));
+            SP_mC.getChildren().add(createMatrizGP(matrizC.getRows(), matrizC.getColumns(), true));
         }
     }
 
@@ -218,4 +229,19 @@ public class CalculadoraOverview implements Initializable {
             }
         });
     }
+
+    private void clearNodes(Matriz matriz, StackPane sp) {
+        if (!matriz.getMatriz().isEmpty()) {
+            matriz.getMatriz().clear();
+        }
+        if (!sp.getChildren().isEmpty()) {
+            sp.getChildren().clear();
+        }
+    }
+
+    private void initMatrizC(Matriz matriz, Matriz auxMatriz) {
+        matriz.setRows(auxMatriz.getRows());
+        matriz.setColumns(auxMatriz.getColumns());
+    }
+
 }

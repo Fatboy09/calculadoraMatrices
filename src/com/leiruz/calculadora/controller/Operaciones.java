@@ -188,13 +188,13 @@ public class Operaciones {
         return new ArrayList<>(Arrays.asList(m3).subList(0, matrizA.getRows() * matrizB.getColumns()));
     }
 
-    public List<BigDecimal> calculateProductoEscalar(BigDecimal number, Matriz matriz) {
+    public static List<BigDecimal> calculateProductoEscalar(BigDecimal number, Matriz matriz) {
         List<BigDecimal> resultado = new ArrayList<>();
         matriz.getMatriz().forEach(e -> resultado.add(e.multiply(number)));
         return resultado;
     }
 
-    public List<BigDecimal> calculateTranspuesta(Matriz matriz) {
+    public static List<BigDecimal> calculateTranspuesta(Matriz matriz) {
         List<BigDecimal> resultado = new ArrayList<>();
         int idx;
         for (int row = 0; row < matriz.getColumns(); row++) {
@@ -206,7 +206,7 @@ public class Operaciones {
         return resultado;
     }
 
-    public List<BigDecimal> calculateAdjunta(Matriz matriz) {
+    public static List<BigDecimal> calculateAdjunta(Matriz matriz) {
         List<BigDecimal> cofactores = new ArrayList<>();
         int orden = matriz.getRows();
 
@@ -222,7 +222,7 @@ public class Operaciones {
         return calculateTranspuesta(m_cofactores);
     }
 
-    public List<BigDecimal> calculateInversa(Matriz matriz) {
+    public static List<BigDecimal> calculateInversa(Matriz matriz) {
         int orden = matriz.getRows();
         BigDecimal determinante = calculateDeterminante(matriz.getMatriz(), orden);
 
