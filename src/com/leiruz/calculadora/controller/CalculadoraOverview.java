@@ -208,6 +208,7 @@ public class CalculadoraOverview implements Initializable {
         }
     }
 
+    @FXML
     public void handleButtonInv_mB() {
         if (Operaciones.is_Matrix_square(matrizB)) {
             clearNodes(matrizB, SP_mC);
@@ -216,6 +217,26 @@ public class CalculadoraOverview implements Initializable {
             matrizC.setMatriz(Operaciones.calculateInversa(matrizB));
             SP_mC.getChildren().add(createMatrizGP(matrizC.getRows(), matrizC.getColumns(), true));
         }
+    }
+
+    @FXML
+    public void handleButtonTrans_mA() {
+        clearNodes(matrizA, SP_mC);
+        inicializarMatriz(SP_mA, matrizA);
+        matrizC.setRows(matrizA.getColumns());
+        matrizC.setColumns(matrizA.getRows());
+        matrizC.setMatriz(Operaciones.calculateTranspuesta(matrizA));
+        SP_mC.getChildren().add(createMatrizGP(matrizC.getRows(), matrizC.getColumns(), true));
+    }
+
+    @FXML
+    public void handleButtonTrans_mB() {
+        clearNodes(matrizB, SP_mC);
+        inicializarMatriz(SP_mB, matrizB);
+        matrizC.setRows(matrizB.getColumns());
+        matrizC.setColumns(matrizB.getRows());
+        matrizC.setMatriz(Operaciones.calculateTranspuesta(matrizB));
+        SP_mC.getChildren().add(createMatrizGP(matrizC.getRows(), matrizC.getColumns(), true));
     }
 
     private void inicializarMatriz(StackPane root, Matriz matriz) {
