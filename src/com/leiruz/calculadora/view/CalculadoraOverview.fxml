@@ -186,21 +186,22 @@
                         <Insets bottom="50.0"/>
                     </padding>
                     <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
-                            mnemonicParsing="false" prefHeight="30.0" prefWidth="135.0" text="A + B">
+                            mnemonicParsing="false" onAction="#handleButtonSuma" prefHeight="30.0" prefWidth="135.0"
+                            text="A + B">
                         <font>
                             <Font name="Droid Sans Mono" size="13.0"/>
                         </font>
                     </Button>
                     <Button alignment="CENTER" contentDisplay="CENTER" layoutX="80.0" layoutY="534.0"
-                            maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0"
-                            prefWidth="135.0" text="A - B">
+                            maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false"
+                            onAction="#handleButtonResta" prefHeight="30.0" prefWidth="135.0" text="A - B">
                         <font>
                             <Font name="Droid Sans Mono" size="13.0"/>
                         </font>
                     </Button>
                     <Button alignment="CENTER" contentDisplay="CENTER" layoutX="80.0" layoutY="508.0"
-                            maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0"
-                            prefWidth="135.0" text="A * B">
+                            maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false"
+                            onAction="#handleButtonProducto" prefHeight="30.0" prefWidth="135.0" text="A * B">
                         <font>
                             <Font name="Droid Sans Mono" size="13.0"/>
                         </font>

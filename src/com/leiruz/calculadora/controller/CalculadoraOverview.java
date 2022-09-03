@@ -21,6 +21,7 @@ import java.math.RoundingMode;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.function.Supplier;
 
@@ -267,6 +268,54 @@ public class CalculadoraOverview implements Initializable {
         hBox.setAlignment(Pos.CENTER);
         hBox.getChildren().addAll(resultado);
         SP_mC.getChildren().addAll(hBox);
+    }
+
+    @FXML
+    public void handleButtonSuma() {
+        clearNodes(matrizB, SP_mC);
+        if (!matrizA.getMatriz().isEmpty()) {
+            matrizA.getMatriz().clear();
+        }
+        inicializarMatriz(SP_mA, matrizA);
+        inicializarMatriz(SP_mB, matrizB);
+        matrizC.setRows(matrizA.getRows());
+        matrizC.setColumns(matrizA.getColumns());
+        matrizC.setMatriz(Operaciones.calculateSuma(matrizA, matrizB));
+        if(Objects.nonNull(matrizC.getMatriz())) {
+            SP_mC.getChildren().add(createMatrizGP(matrizC.getRows(), matrizC.getColumns(), true));
+        }
+    }
+
+    @FXML
+    public void handleButtonResta() {
+        clearNodes(matrizB, SP_mC);
+        if (!matrizA.getMatriz().isEmpty()) {
+            matrizA.getMatriz().clear();
+        }
+        inicializarMatriz(SP_mA, matrizA);
+        inicializarMatriz(SP_mB, matrizB);
+        matrizC.setRows(matrizA.getRows());
+        matrizC.setColumns(matrizA.getColumns());
+        matrizC.setMatriz(Operaciones.calculateResta(matrizA, matrizB));
+        if(Objects.nonNull(matrizC.getMatriz())) {
+            SP_mC.getChildren().add(createMatrizGP(matrizC.getRows(), matrizC.getColumns(), true));
+        }
+    }
+
+    @FXML
+    public void handleButtonProducto() {
+        clearNodes(matrizB, SP_mC);
+        if (!matrizA.getMatriz().isEmpty()) {
+            matrizA.getMatriz().clear();
+        }
+        inicializarMatriz(SP_mA, matrizA);
+        inicializarMatriz(SP_mB, matrizB);
+        matrizC.setRows(matrizA.getRows());
+        matrizC.setColumns(matrizB.getColumns());
+        matrizC.setMatriz(Operaciones.calculateProducto(matrizA, matrizB));
+        if(Objects.nonNull(matrizC.getMatriz())) {
+            SP_mC.getChildren().add(createMatrizGP(matrizC.getRows(), matrizC.getColumns(), true));
+        }
     }
 
     private void inicializarMatriz(StackPane root, Matriz matriz) {

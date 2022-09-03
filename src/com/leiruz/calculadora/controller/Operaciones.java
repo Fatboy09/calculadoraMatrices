@@ -149,7 +149,7 @@ public class Operaciones {
         return resultado;
     }
 
-    public List<BigDecimal> calculateResta(Matriz matrizA, Matriz matrizB) {
+    public static List<BigDecimal> calculateResta(Matriz matrizA, Matriz matrizB) {
         if (!Objects.equals(matrizA.getRows(), matrizB.getRows()) || !Objects.equals(matrizA.getColumns(), matrizB.getColumns()))
             return null;
 
@@ -164,7 +164,7 @@ public class Operaciones {
         return resultado;
     }
 
-    public List<BigDecimal> calculateProducto(Matriz matrizA, Matriz matrizB) {
+    public static List<BigDecimal> calculateProducto(Matriz matrizA, Matriz matrizB) {
         if (!Objects.equals(matrizA.getColumns(), matrizB.getRows()))
             return null;
 
